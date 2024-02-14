@@ -1,29 +1,23 @@
-count = 1
-temp = True
-stack = []
+n = int(input())
+stack =[]
 op = []
+Max = 0
 
-N = int(input())
-for i in range(N):
+for _ in range(n):
     num = int(input())
-    # num이하 숫자까지 스택에 넣기
-    while count <= num:
-        stack.append(count)
-        op.append('+')
-        count += 1
-
-    # num이랑 스택 맨 위 숫자가 동일하다면 제거
-    if stack[-1] == num:
-        stack.pop()
-        op.append('-')
-    # 스택 수열을 만들 수 없으므로 NO
+    if num > Max:
+        for i in range((Max+1),(num+1)):
+            stack.append(i)
+            op.append('+')
+        stack.pop() and op.append('-')
+        Max = num
     else:
-        temp = False
-        break
-
-# 스택 수열을 만들수 있는지 여부에 따라 출력 
-if temp == False:
-    print("NO")
+        if stack[-1] == num:
+            stack.pop()
+            op.append('-')
+        else:
+            print('NO')
+            break
 else:
-    for i in op:
-        print(i)
+    for K in op:
+        print(K)
