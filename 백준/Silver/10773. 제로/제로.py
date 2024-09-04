@@ -1,10 +1,16 @@
-lst =[]
-k = int(input())
-for i in range(k):
-    n = int(input())
-    if n == 0:
-        lst.pop()
-    else:
-        lst.append(n)
+import sys
+input = sys.stdin.readline
 
-print(sum(lst))
+n = int(input())
+stack = [0]
+
+for j in range(n):
+    i = int(input())
+    if i != 0:
+        stack.append(i)
+        # print('넣는다',i)
+    else:
+        a=stack.pop()
+        # print('뺀다',a)
+
+print(sum(stack))
